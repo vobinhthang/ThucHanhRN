@@ -1,12 +1,14 @@
 import React from "react";
 import { View ,StyleSheet,useWindowDimensions,Image,Text, Alert} from "react-native";
 
-
+import { useNavigation } from "@react-navigation/native";
 
 export default function BgroundOnBoardingItems({item})  {
     const {width}=useWindowDimensions();
+    const navigation=useNavigation();
+
     return (
-        <View style={[styles.bground,{width}]} onTouchEnd={()=>Alert.alert('hello')} >
+        <View style={[styles.bground,{width}]} onTouchEnd={()=>navigation.navigate('LandingScreen')} >
             <Image source={item.image} style={[styles.logo,{width,resizeMode:'contain'}]} ></Image>
            <View style={{flex:0.3}}>
                 <Text style={styles.title_head} >{item.title}</Text>
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
         flex: 0.7,
         marginBottom:50,
         justifyContent:'center',
-        
+        tintColor:'white'
       },
       title_head: {
         color: 'white',
